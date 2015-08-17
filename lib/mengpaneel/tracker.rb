@@ -78,7 +78,7 @@ module Mengpaneel
         super(tracker.token)
       end
 
-      %w(set set_once increment append track_charge clear_charges delete_user).map(&:to_sym).each do |method_name|
+      %w(set set_once unset increment append track_charge clear_charges delete_user).map(&:to_sym).each do |method_name|
         define_method(method_name) do |*args|
           args.unshift(tracker.distinct_id) unless args.first == tracker.distinct_id
           super(*args)
