@@ -9,7 +9,7 @@ module Mengpaneel
         for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
       CODE
 
-      delegate :request, :response, :env, to: :controller, allow_nil: true
+      delegate :request, :response, to: :controller, allow_nil: true
 
       def run
         return false unless controller
@@ -86,7 +86,7 @@ module Mengpaneel
         def streaming?
           return false unless defined?(ActionController::Live)
 
-          env["action_controller.instance"].class.included_modules.include?(ActionController::Live)
+          #env["action_controller.instance"].class.included_modules.include?(ActionController::Live)
         end
     end
   end
