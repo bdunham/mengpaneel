@@ -76,7 +76,7 @@ module Mengpaneel
         end
 
         def html?
-          response.content_type && response.content_type.include?("text/html")
+          response.media_type && response.media_type.include?("text/html")
         end
 
         def attachment?
