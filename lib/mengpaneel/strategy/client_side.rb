@@ -39,7 +39,7 @@ module Mengpaneel
       private
         def source_for_head
           [
-            %{<script type="text/javascript">},
+            %{<script type="text/javascript" nonce="#{SecureHeaders.content_security_policy_script_nonce(request)}">},
               SETUP_CODE,
 
               %{mixpanel.init(#{Mengpaneel.token.to_json});},
@@ -54,7 +54,7 @@ module Mengpaneel
           return if all_calls[:tracking].blank?
 
           [
-            %{<script type="text/javascript">},
+            %{<script type="text/javascript" nonce="#{SecureHeaders.content_security_policy_script_nonce(request)}">},
               *javascript_calls(:tracking),
             %{</script>}
           ].join("\n")
